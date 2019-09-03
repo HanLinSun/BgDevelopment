@@ -38,7 +38,7 @@ func Test01(t *testing.T) {
 	r.GET("/ping", GetInfos)
 	r.POST("/ping",PostInfos)
 	r.POST("/LoginForm",LoginForm)
-	r.Run(":8082")
+	r.Run(":8084")
 	r.GET("/user/:name/:password",ginHandler)
 	r.POST("",printer)
 }

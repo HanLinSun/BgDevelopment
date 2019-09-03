@@ -4,15 +4,16 @@ import (
 	_"github.com/go-sql-driver/mysql"
 	"CountSystem/Ginpack"
 	"CountSystem/RedisLink"
+	"CountSystem/MysqlLink"
 )
 
 //数据结构体声明在mysqlLink中
 
 func main(){
+	MysqlLink.InitSql()
 	RedisLink.InitRedis()
 	router:=Ginpack.InitRouter()
-
-	router.Run(":8082")
+	router.Run(":8086")
 	/*
 	User01:=new(MysqlLink.User)
 	User02:=new(MysqlLink.User)

@@ -23,7 +23,7 @@ func IndexApi(c *gin.Context){
 	c.String(http.StatusOK,"Begin to work")
 }
 func GetUsersInDBApi(c *gin.Context){
-	var u MysqlLink.User
+	var u = MysqlLink.User{}
 	users,err:=u.FetchAlluser(MysqlLink.SqlDB)
 	MysqlLink.CheckErr(err)
 	c.JSON(http.StatusOK,gin.H{
@@ -36,7 +36,7 @@ func GetUserInDBApi(c *gin.Context){
 	if err!=nil{
 		fmt.Println("failure:",err.Error())
 	}
-	var user MysqlLink.User
+	var user = MysqlLink.User{}
 	user.UserID=RealID
 	temp,err:=user.FetchUserInfo(MysqlLink.SqlDB)
 	if err!=nil{

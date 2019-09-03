@@ -35,7 +35,6 @@ func InitSql(){
 	}
 }
 func (user *User)FetchUserInfo(db *sql.DB) (retn User,err error){
-	InitSql()
 	rows,err:=db.Query("select * from UserInfo where UserID=?",user.UserID)
 	CheckErr(err)
 	for rows.Next(){
@@ -51,14 +50,13 @@ func (user *User)FetchAlluser(db *sql.DB)(users []User,err error){
 	CheckErr(err)
 	for rows.Next(){
 		var user User
-		rows.Scan(&user.UserID,&user.UserRepo)
+		rows.Scan(user.UserID,user.UserRepo)
 		users = append(users,user)
 	}
 	defer rows.Close()
 	return
 }
 func ShowMysqlData(db *sql.DB){
-	InitSql()
 	rows,err:=db.Query("select * from UserInfo")
 	CheckErr(err)
 	for rows.Next(){
